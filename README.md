@@ -15,10 +15,10 @@ The library has no CinePlayer, Anime4K, UI or playback dependency. It bundles it
 
 ## Swift Package usage
 
-For the current sibling checkout:
+Add the v0.1.0 release with Swift Package Manager:
 
 ```swift
-dependencies: [.package(path: "../artcnn-metal")],
+dependencies: [.package(url: "https://github.com/cinemore/artcnn-metal.git", exact: "0.1.0")],
 targets: [
     .target(name: "YourTarget", dependencies: [
         .product(name: "ArtCNNMetal", package: "artcnn-metal")
@@ -38,6 +38,8 @@ let imageOutput = try upscaler.enhance(image: image)
 The output is always exactly 2× the input in each dimension. Video input requires BT.601 or BT.709 matrix metadata, or BGRA with BT.709 primaries. Unknown matrices are rejected. The CGImage entry point converts to sRGB BGRA with documented BT.709 luma coefficients.
 
 The synchronous high-level API serializes calls, waits for GPU completion and returns independently owned buffers. It accepts BGRA directly and converts other supported CoreVideo formats through VideoToolbox. Source data is not modified; display/color attachments are carried to the output with clean aperture scaled. The CGImage entry point converts image colors to sRGB.
+
+For sibling development checkouts, replace the URL requirement with `.package(path: "../artcnn-metal")`.
 
 ## Integrating into a GPU pipeline
 
@@ -61,7 +63,7 @@ The CLI uses the fixed native 2× model.
 
 The release workflow builds **arm64**, **x86_64** and **universal** archives. Every archive includes `bin/artcnn-metal`, its adjacent `ArtCNNMetal_ArtCNNMetal.bundle`, LICENSE and notices. Keep the bundle beside the executable when relocating it.
 
-After publishing a release and its generated formula to `cinemore/homebrew-tap`:
+Install the CLI from the shared `cinemore/homebrew-tap`:
 
 ```sh
 brew install cinemore/tap/artcnn-metal

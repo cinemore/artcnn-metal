@@ -6,7 +6,7 @@ Apple Metal 原生 ArtCNN C4F16 原生 2× 超分，提供独立 Swift Package �
 
 ## 使用
 
-本机项目通过 `.package(path: "../artcnn-metal")` 引入 `ArtCNNMetal` product：
+通过 `.package(url: "https://github.com/cinemore/artcnn-metal.git", exact: "0.1.0")` 引入 `ArtCNNMetal` product；本机开发也可使用 `.package(path: "../artcnn-metal")`：
 
 ```swift
 import ArtCNNMetal
@@ -29,7 +29,7 @@ swift run artcnn-metal --self-test
 swift run artcnn-metal --input input.png --output output.png --bench 5
 ```
 
-始终输出原生 2×。 发布工作流生成 arm64、x86_64、universal 二进制归档，程序与资源 bundle 必须放在相邻位置。首次发布并同步共享 tap 后可使用：
+始终输出原生 2×。 发布工作流生成 arm64、x86_64、universal 二进制归档，程序与资源 bundle 必须放在相邻位置。通过共享 Homebrew tap 安装：
 
 ```sh
 brew install cinemore/tap/artcnn-metal
