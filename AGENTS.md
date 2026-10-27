@@ -1,6 +1,7 @@
 # Agent instructions
 
-- Keep the library independent of CinePlayer and host apps. Public APIs use Metal, CoreVideo and CoreGraphics types.
+- Build reusable image and video processing APIs with Metal, CoreVideo and CoreGraphics types.
+- Describe capabilities, inputs and outputs directly. Keep application-specific references in demos or examples.
 - Preserve shader math, direct FP32 fast (-ffast-math -ffp-contract=fast) compilation and upstream attribution.
 - Edit source with built-in editing tools. Use Bun/TypeScript for new automation.
 - Engines borrow caller resources: document serial use and GPU completion. Never commit caller command buffers.
